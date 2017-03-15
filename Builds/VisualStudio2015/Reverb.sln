@@ -1,0 +1,19 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2015
+Project("{DBE5EB2C-582E-4738-BC48-5E25BCF92FAE}") = "Reverb", "Reverb.vcxproj", "{7ADFF0D8-92BB-B47C-1780-2EAD6996BA2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7ADFF0D8-92BB-B47C-1780-2EAD6996BA2F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7ADFF0D8-92BB-B47C-1780-2EAD6996BA2F}.Debug|Win32.Build.0 = Debug|Win32
+		{7ADFF0D8-92BB-B47C-1780-2EAD6996BA2F}.Release|Win32.ActiveCfg = Release|Win32
+		{7ADFF0D8-92BB-B47C-1780-2EAD6996BA2F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
