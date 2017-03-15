@@ -61,16 +61,10 @@ public:
     void parameterChange (AudioProcessorParameter* param, float newValue);
 
     //==============================================================================
-    // Our parameters
-    AudioProcessorParameter* roomSize;
-    AudioProcessorParameter* damping;
-    AudioProcessorParameter* wet;
-    AudioProcessorParameter* dry;
-    AudioProcessorParameter* width;
 
 private:
     ScopedPointer<Reverb> reverb;
-
+	AudioProcessorValueTreeState parameters;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReverbProcessor)
 };

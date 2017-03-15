@@ -36,40 +36,42 @@ class ReverbProcessor;
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class ReverbEditor  : public AudioProcessorEditor,
-                      public SliderListener
+class ReverbEditor  : public AudioProcessorEditor
 {
 public:
     //==============================================================================
-    ReverbEditor (ReverbProcessor& processor);
+    ReverbEditor (ReverbProcessor& processor, AudioProcessorValueTreeState& vts);
     ~ReverbEditor();
 
     //==============================================================================
-    //[UserMethods]     -- You can add your own custom methods in this section.
-    void parameterChange (AudioProcessorParameter* param, float newValue);
-    //[/UserMethods]
-
     void paint (Graphics& g);
     void resized();
-    void sliderValueChanged (Slider* sliderThatWasMoved);
-
-
+	typedef AudioProcessorValueTreeState::SliderAttachment SliderAttachment;
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
     //[/UserVariables]
-
+	AudioProcessorValueTreeState& valueTreeState;
     //==============================================================================
     ScopedPointer<Slider> roomSize;
     ScopedPointer<Label> roomSizeLabel;
+	ScopedPointer<SliderAttachment> roomSizeAttachment;
+
     ScopedPointer<Slider> damping;
     ScopedPointer<Label> dampingLabel;
+	ScopedPointer<SliderAttachment> dampingAttachment;
+
     ScopedPointer<Slider> wet;
     ScopedPointer<Label> wetLabel;
+	ScopedPointer<SliderAttachment> wetAttachment;
+
     ScopedPointer<Slider> dry;
     ScopedPointer<Label> dryLabel;
+	ScopedPointer<SliderAttachment> dryAttachment;
+
     ScopedPointer<Slider> width;
     ScopedPointer<Label> widthLabel;
+	ScopedPointer<SliderAttachment> widthAttachment;
 
 
     //==============================================================================

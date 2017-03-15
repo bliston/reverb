@@ -11,57 +11,6 @@
 #include "ReverbProcessor.h"
 #include "ReverbEditor.h"
 
-class FloatParameter : public AudioProcessorParameter
-{
-public:
-
-    FloatParameter (ReverbProcessor& p, float defaultParameterValue, const String& paramName)
-        : parent (p), 
-          defaultValue (defaultParameterValue),
-          value (defaultParameterValue),
-          name (paramName)
-    {
-    }
-
-    float getValue() const override
-    {
-        return value;
-    }
-
-    void setValue (float newValue) override
-    {
-        value = newValue;
-        parent.parameterChange (this, newValue);
-    }
-
-    float getDefaultValue() const override
-    {
-        return defaultValue;
-    }
-
-    String getName (int maximumStringLength) const override
-    {
-        ignoreUnused (maximumStringLength);
-
-        return name;
-    }
-
-    String getLabel() const override
-    {
-        return String();
-    }
-
-    float getValueForText (const String& text) const override
-    {
-        return text.getFloatValue();
-    }
-
-private:
-    ReverbProcessor& parent;
-    float defaultValue, value;
-    String name;
-};
-
 const float defaultRoomSize = 0.5f;
 const float defaultDamping = 0.5f;
 const float defaultWetLevel = 0.33f;
@@ -69,14 +18,49 @@ const float defaultDryLevel = 0.4f;
 const float defaultWidth = 1.0f;
 
 //==============================================================================
-ReverbProcessor::ReverbProcessor()
+ReverbProcessor::ReverbProcessor() : parameters(*this, nullptr)
 {
-        // Set up our parameters. The base class will delete them for us.
-    addParameter (roomSize  = new FloatParameter (*this, defaultRoomSize,  "Room Size"));
-    addParameter (damping = new FloatParameter (*this, defaultDamping, "Damping"));
-    addParameter (wet = new FloatParameter (*this, defaultWetLevel, "Wet"));
-    addParameter (dry = new FloatParameter (*this, defaultDryLevel, "Dry"));
-    addParameter (width = new FloatParameter (*this, defaultWidth, "Width"));
+	parameters.createAndAddParameter("roomSize",       // parameter ID
+		"Room Size",       // parameter name
+		String(),     // parameter label (suffix)
+		NormalisableRange<float>(0.0f, 1.0f),    // range
+		defaultRoomSize,         // default value
+		nullptr,
+		nullptr);
+
+	parameters.createAndAddParameter("damping",       // parameter ID
+		"Damping",       // parameter name
+		String(),     // parameter label (suffix)
+		NormalisableRange<float>(0.0f, 1.0f),    // range
+		defaultDamping,         // default value
+		nullptr,
+		nullptr);
+
+	parameters.createAndAddParameter("wet",       // parameter ID
+		"Wet",       // parameter name
+		String(),     // parameter label (suffix)
+		NormalisableRange<float>(0.0f, 1.0f),    // range
+		defaultWetLevel,         // default value
+		nullptr,
+		nullptr);
+
+	parameters.createAndAddParameter("dry",       // parameter ID
+		"Dry",       // parameter name
+		String(),     // parameter label (suffix)
+		NormalisableRange<float>(0.0f, 1.0f),    // range
+		defaultDryLevel,         // default value
+		nullptr,
+		nullptr);
+
+	parameters.createAndAddParameter("width",       // parameter ID
+		"Width",       // parameter name
+		String(),     // parameter label (suffix)
+		NormalisableRange<float>(0.0f, 1.0f),    // range
+		defaultWidth,         // default value
+		nullptr,
+		nullptr);
+
+	parameters.state = ValueTree(Identifier("Reverb"));
 }
 
 ReverbProcessor::~ReverbProcessor()
@@ -190,11 +174,11 @@ void ReverbProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiM
 
     Reverb::Parameters p;
 
-    p.roomSize = roomSize->getValue();
-    p.damping = damping->getValue();
-    p.wetLevel = wet->getValue();
-    p.dryLevel = dry->getValue();
-    p.width = width->getValue();
+	p.roomSize = *parameters.getRawParameterValue("roomSize");
+	p.damping = *parameters.getRawParameterValue("damping");
+	p.wetLevel = *parameters.getRawParameterValue("wet");
+	p.dryLevel = *parameters.getRawParameterValue("dry");
+	p.width = *parameters.getRawParameterValue("width");
     p.freezeMode = 0.0f;
 
     reverb->setParameters (p);
@@ -216,23 +200,22 @@ bool ReverbProcessor::hasEditor() const
 
 AudioProcessorEditor* ReverbProcessor::createEditor()
 {
-    return new ReverbEditor (*this);
+    return new ReverbEditor (*this, parameters);
 }
 
 //==============================================================================
 void ReverbProcessor::getStateInformation (MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
-    ignoreUnused (destData);
+	ScopedPointer<XmlElement> xml(parameters.state.createXml());
+	copyXmlToBinary(*xml, destData);
 }
 
 void ReverbProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
-    ignoreUnused (data, sizeInBytes);
+	ScopedPointer<XmlElement> xmlState(getXmlFromBinary(data, sizeInBytes));
+	if (xmlState != nullptr)
+		if (xmlState->hasTagName(parameters.state.getType()))
+			parameters.state = ValueTree::fromXml(*xmlState);
 }
 
 //==============================================================================
