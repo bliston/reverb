@@ -12,6 +12,11 @@
               companyEmail="info@songwish.ca">
   <MAINGROUP id="j9aZm9" name="Reverb">
     <GROUP id="{B595F829-4E67-F61E-D756-D23C7F683264}" name="Source">
+      <FILE id="u8r0sK" name="AppColours.h" compile="0" resource="0" file="Source/AppColours.h"/>
+      <FILE id="wsLCg5" name="BinaryData.cpp" compile="1" resource="0" file="Source/BinaryData.cpp"/>
+      <FILE id="LmVW8p" name="BinaryData.h" compile="0" resource="0" file="Source/BinaryData.h"/>
+      <FILE id="NuoaUz" name="CustomLookAndFeel.h" compile="0" resource="0"
+            file="Source/CustomLookAndFeel.h"/>
       <FILE id="YLLRdT" name="ReverbEditor.cpp" compile="1" resource="0"
             file="Source/ReverbEditor.cpp"/>
       <FILE id="EftBcx" name="ReverbEditor.h" compile="0" resource="0" file="Source/ReverbEditor.h"/>

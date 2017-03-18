@@ -35,6 +35,8 @@ ReverbEditor::ReverbEditor (ReverbProcessor& processor, AudioProcessorValueTreeS
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
+    LookAndFeel::setDefaultLookAndFeel(&lookAndFeel);
+    
     addAndMakeVisible (roomSize = new Slider ("Room Size Slider"));
     roomSize->setRange (0, 1, 0);
     roomSize->setSliderStyle (Slider::LinearHorizontal);
@@ -109,7 +111,7 @@ ReverbEditor::ReverbEditor (ReverbProcessor& processor, AudioProcessorValueTreeS
     //[UserPreSize]
     //[/UserPreSize]
 
-    setSize (600, 140);
+    setSize (295, 140);
 }
 
 ReverbEditor::~ReverbEditor()
