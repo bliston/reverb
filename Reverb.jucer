@@ -15,10 +15,10 @@
       <FILE id="u8r0sK" name="AppColours.h" compile="0" resource="0" file="Source/AppColours.h"/>
       <FILE id="wsLCg5" name="BinaryData.cpp" compile="1" resource="0" file="Source/BinaryData.cpp"/>
       <FILE id="LmVW8p" name="BinaryData.h" compile="0" resource="0" file="Source/BinaryData.h"/>
-      <FILE id="NuoaUz" name="CustomLookAndFeel.h" compile="0" resource="0"
-            file="Source/CustomLookAndFeel.h"/>
       <FILE id="YLLRdT" name="ReverbEditor.cpp" compile="1" resource="0"
             file="Source/ReverbEditor.cpp"/>
+      <FILE id="RR2U0p" name="MiddleLookAndFeel.h" compile="0" resource="0"
+            file="Source/MiddleLookAndFeel.h"/>
       <FILE id="EftBcx" name="ReverbEditor.h" compile="0" resource="0" file="Source/ReverbEditor.h"/>
       <FILE id="yPVPWI" name="ReverbProcessor.cpp" compile="1" resource="0"
             file="Source/ReverbProcessor.cpp"/>

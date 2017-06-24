@@ -2217,7 +2217,7 @@
     <ClInclude Include="..\..\Source\BinaryData.h">
       <Filter>Reverb\Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\CustomLookAndFeel.h">
+    <ClInclude Include="..\..\Source\MiddleLookAndFeel.h">
       <Filter>Reverb\Source</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ReverbEditor.h">
