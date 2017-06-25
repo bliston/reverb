@@ -22,7 +22,6 @@
 
 //[Headers]     -- You can add your own extra header files here --
 #include "JuceHeader.h"
-#include "MiddleLookAndFeel.h"
 
 class ReverbProcessor;
 //[/Headers]
@@ -74,7 +73,7 @@ private:
     ScopedPointer<Label> widthLabel;
 	ScopedPointer<SliderAttachment> widthAttachment;
     
-    MiddleLookAndFeel lookAndFeel;
+    Peels::MiddleLookAndFeel lookAndFeel;
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ReverbEditor)

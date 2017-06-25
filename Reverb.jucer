@@ -12,13 +12,8 @@
               companyEmail="info@songwish.ca">
   <MAINGROUP id="j9aZm9" name="Reverb">
     <GROUP id="{B595F829-4E67-F61E-D756-D23C7F683264}" name="Source">
-      <FILE id="u8r0sK" name="AppColours.h" compile="0" resource="0" file="Source/AppColours.h"/>
-      <FILE id="wsLCg5" name="BinaryData.cpp" compile="1" resource="0" file="Source/BinaryData.cpp"/>
-      <FILE id="LmVW8p" name="BinaryData.h" compile="0" resource="0" file="Source/BinaryData.h"/>
       <FILE id="YLLRdT" name="ReverbEditor.cpp" compile="1" resource="0"
             file="Source/ReverbEditor.cpp"/>
-      <FILE id="RR2U0p" name="MiddleLookAndFeel.h" compile="0" resource="0"
-            file="Source/MiddleLookAndFeel.h"/>
       <FILE id="EftBcx" name="ReverbEditor.h" compile="0" resource="0" file="Source/ReverbEditor.h"/>
       <FILE id="yPVPWI" name="ReverbProcessor.cpp" compile="1" resource="0"
             file="Source/ReverbProcessor.cpp"/>
@@ -47,6 +42,7 @@
         <MODULEPATH id="juce_audio_formats" path="../../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_processors" path="../../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_plugin_client" path="../../../../JUCE/modules"/>
+        <MODULEPATH id="Peels" path="modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
     <VS2015 targetFolder="Builds/VisualStudio2015">
@@ -71,6 +67,7 @@
         <MODULEPATH id="juce_audio_formats" path="../../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_processors" path="../../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_plugin_client" path="../../../../JUCE/modules"/>
+        <MODULEPATH id="Peels" path="modules"/>
       </MODULEPATHS>
     </VS2015>
   </EXPORTFORMATS>
@@ -89,6 +86,7 @@
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
     <MODULE id="juce_video" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="Peels" showAllCode="1" useLocalCopy="0"/>
   </MODULES>
   <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
 </JUCERPROJECT>
